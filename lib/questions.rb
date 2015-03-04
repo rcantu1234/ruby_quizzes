@@ -3,11 +3,16 @@
 #There is an error in the following code.  Fix it!
 
 items = Array.new
-items.push{:a => "b", :c => "d"}
+items.push(:a => "b", :c => "d")
 
 #-------------------------------------------------#
 #Question 2. Regular Ball Super Ball
 
+class Ball
+   attr_accessor :ball_type
+   def initialize(has_an_arity_of_1 = 'regular')
+    @ball_type = has_an_arity_of_1
+   end
 #Create a class Ball.
 
 #Ball objects should accept one argument for "ball type" when instantiated.
@@ -21,7 +26,7 @@ items.push{:a => "b", :c => "d"}
 # ball2 = Ball.new "super"
 # ball1.ball_type  #=> "regular"
 # ball2.ball_type  #=> "super"
-
+end
 #-------------------------------------------------#
 #Question 3. Sum Array
 
@@ -30,6 +35,10 @@ items.push{:a => "b", :c => "d"}
 #then you should return 0.
 
 def sum_array(arr)
+  if arr.length == 0
+    return 0
+  end
+  arr.reduce(:+)
 end
 
 sum_array([]) == 0
@@ -43,9 +52,14 @@ sum_array([1, 5.2, 4, 0, -1]) == 9.2
 
 #If you get stuck, you can read up here:
 
-#http://www.rubycuts.com/enum-any
 
 def any?(arr, &block)
+  arr.each do |i|
+    if block.call(i) == true
+      return true
+    end
+  end
+  return false
 end
 
 #--------------------------------------------------#
@@ -60,6 +74,13 @@ end
 # multiplicands, but only two 1's in the product
 
 def vamp_numbers(arr)
+  final = 1
+  arr.each do |i|
+    if final *= i
+      return true
+    end
+  end
+    return false
 end
 
 vamp_numbers([6,21]) == true

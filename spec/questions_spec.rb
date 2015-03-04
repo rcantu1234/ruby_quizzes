@@ -21,7 +21,7 @@ describe 'Quiz Questions!' do
   end
   describe 'Question 3: Sum Array' do
     it 'returns 0 for an empty array' do
-      expect(sum_arary([])).to eq(0)
+      expect(sum_array([])).to eq(0)
     end
     it 'returns 5 for an array of 3 and 2' do
       expect(sum_array([3, 2])).to eq(5)
